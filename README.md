@@ -1,6 +1,6 @@
 # CustomGento_DefaultStoreCodeRemover
 
-Magento 2 module for hiding default store code.
+Magento 2 module for hiding the store code in the default store.
 
 ## Description
 
@@ -15,7 +15,7 @@ The module is in effect only when <code>web/url/use_store</code> is enabled
 * <code>bin/magento cache:flush</code>
 * <code>bin/magento setup:di:compile</code>
 
-##Example
+## Example
 When the store codes in the url are disabled, the URL of the stores looks like this: `https://website.com/`.
 
 When the store codes in the url are enabled, the URL of the stores looks like this: `https://website.com/store_code/`.
