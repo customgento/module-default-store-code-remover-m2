@@ -14,10 +14,7 @@ class FindRestStorePlugin
 
     public function aroundGetCurrentStoreId($subject, callable $proceed)
     {
-        $logger = \Magento\Framework\App\ObjectManager::getInstance()->get(\Psr\Log\LoggerInterface::class);
-
         $pathInfo = $this->request->getPathInfo();
-        $logger->info($pathInfo);
         $pathParts = explode('/', trim($pathInfo, '/'));
         if('rest' == current($pathParts)) {
             if($storeCode = next($pathParts)) {
