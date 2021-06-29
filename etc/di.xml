@@ -3,4 +3,7 @@
     <type name="Magento\Store\Model\Store">
         <plugin name="hide_default_store_code" type="CustomGento\DefaultStoreCodeRemover\Plugin\Store\HideDefaultStoreCodePlugin"/>
     </type>
+    <type name="Magento\Store\Model\StoreResolver">
+        <plugin name="find_rest_store_code" type="CustomGento\DefaultStoreCodeRemover\Plugin\StoreResolver\FindRestStorePlugin"/>
+    </type>
 </config>
