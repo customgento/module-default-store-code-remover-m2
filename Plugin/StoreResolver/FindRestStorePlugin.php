@@ -18,7 +18,7 @@ class FindRestStorePlugin
         $pathParts = explode('/', trim($pathInfo, '/'));
         if('rest' == current($pathParts)) {
             if($storeCode = next($pathParts)) {
-                if($storeCode != \Magento\Webapi\Controller\PathProcessor::ALL_STORE_CODE) {
+                if($storeCode != \Magento\Webapi\Controller\PathProcessor::ALL_STORE_CODE && !stristr($storeCode, 'v1')) {
                     try {
                         $store = $this->storeRepository->getActiveStoreByCode($storeCode);
                         return $store->getId();
