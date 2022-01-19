@@ -1,6 +1,6 @@
-# CustomGento_DefaultStoreCodeRemover
+# Default Store Code Remover for Magento 2
 
-Magento 2 module for hiding the store code in the default store.
+Default Store Code Remover for Magento 2 hides the store code in the default store from the URL. The module is in effect only when <span class="font-code">web/url/use_store</span> is enabled and is meant to be used for multistore setups, where the default shop should not contain any store code, whereas all other stores should.
 
 ## Description
 
