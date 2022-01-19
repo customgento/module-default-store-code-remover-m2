@@ -1,6 +1,6 @@
 {
     "name": "customgento/module-default-store-code-remover-m2",
-    "description": "This module removes the store code from the url on the default store",
+    "description": "Default Store Code Remover for Magento 2 hides the store code in the default store from the URL.",
     "type": "magento2-module",
     "version": "1.0.0",
     "license": "OSL-3.0",
