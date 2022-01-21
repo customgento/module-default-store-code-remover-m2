@@ -21,5 +21,8 @@ but will show it for any other store.
 
 So, for the default store the url will be `https://website.com/` while for all other store, the URL will be : `https://website.com/store_code`
 
+## License
+[OSL - Open Software Licence 3.0](https://opensource.org/licenses/osl-3.0.php)
+
 ## Copyright
-&copy; 2021 CustomGento GmbH
+&copy; 2021 - present CustomGento GmbH
