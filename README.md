@@ -25,4 +25,4 @@ So, for the default store the url will be `https://website.com/` while for all o
 [OSL - Open Software Licence 3.0](https://opensource.org/licenses/osl-3.0.php)
 
 ## Copyright
-&copy; 2021 CustomGento GmbH - Present
+&copy; 2021 - present CustomGento GmbH
