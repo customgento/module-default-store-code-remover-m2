@@ -3,4 +3,6 @@
     <type name="Magento\Store\Model\Store">
         <plugin name="hide_default_store_code" type="CustomGento\DefaultStoreCodeRemover\Plugin\Store\HideDefaultStoreCodePlugin"/>
     </type>
+
+    <preference for="MageWorx\SeoBase\Helper\StoreUrl" type="CustomGento\DefaultStoreCodeRemover\Helper\StoreUrl"/>
 </config>
