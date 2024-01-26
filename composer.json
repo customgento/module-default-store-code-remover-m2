@@ -20,6 +20,5 @@
         "psr-4": {
             "CustomGento\\DefaultStoreCodeRemover\\": ""
         }
-    },
-    "minimum-stability": "stable"
+    }
 }
