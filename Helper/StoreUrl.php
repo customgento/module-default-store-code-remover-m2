@@ -8,6 +8,7 @@ use Magento\Store\Api\Data\StoreInterface;
 use Magento\Store\Model\Store;
 use MageWorx\SeoBase\Helper\StoreUrl as MageworxStoreUrl; /** @phpstan-ignore-line */
 
+/** @phpstan-ignore-next-line */
 class StoreUrl extends MageworxStoreUrl /** @phpstan-ignore-line */
 {
     protected function isUseStoreCodeInUrl(StoreInterface $store): bool
