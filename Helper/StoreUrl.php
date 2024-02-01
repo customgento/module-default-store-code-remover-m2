@@ -6,7 +6,7 @@ namespace CustomGento\DefaultStoreCodeRemover\Helper;
 
 use Magento\Store\Api\Data\StoreInterface;
 use Magento\Store\Model\Store;
-use MageWorx\SeoBase\Helper\StoreUrl as MageworxStoreUrl;
+use MageWorx\SeoBase\Helper\StoreUrl as MageworxStoreUrl; /** @phpstan-ignore-line */
 
 class StoreUrl extends MageworxStoreUrl
 {
