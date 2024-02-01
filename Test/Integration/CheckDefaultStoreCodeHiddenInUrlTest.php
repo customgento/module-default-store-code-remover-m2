@@ -38,7 +38,7 @@ class CheckDefaultStoreCodeHiddenInUrlTest extends AbstractController
     {
         $store = $this->storeRepository->get('test');
         $this->config->setValue(Store::XML_PATH_STORE_IN_URL, true, ScopeInterface::SCOPE_STORE, $store->getCode());
-        $this->assertContains('test', $store->getBaseUrl());
+        $this->assertStringContainsString('test', $store->getBaseUrl());
     }
 
     /**
@@ -48,20 +48,20 @@ class CheckDefaultStoreCodeHiddenInUrlTest extends AbstractController
     {
         $store = $this->storeRepository->get('test');
         $this->config->setValue(Store::XML_PATH_STORE_IN_URL, false, ScopeInterface::SCOPE_STORE, $store->getCode());
-        $this->assertNotContains('test', $store->getBaseUrl());
+        $this->assertStringNotContainsString('test', $store->getBaseUrl());
     }
 
     public function testStoreCodeIsNotShownInDefaultStoreUrl(): void
     {
         $store = $this->storeRepository->get('default');
         $this->config->setValue(Store::XML_PATH_STORE_IN_URL, false, ScopeInterface::SCOPE_STORE, $store->getCode());
-        $this->assertNotContains('default', $store->getBaseUrl());
+        $this->assertStringNotContainsString('default', $store->getBaseUrl());
     }
 
     public function testStoreCodeIsShownInDefaultStoreUrl(): void
     {
         $store = $this->storeRepository->get('default');
         $this->config->setValue(Store::XML_PATH_STORE_IN_URL, true, ScopeInterface::SCOPE_STORE, $store->getCode());
-        $this->assertNotContains('default', $store->getBaseUrl());
+        $this->assertStringNotContainsString('default', $store->getBaseUrl());
     }
 }
