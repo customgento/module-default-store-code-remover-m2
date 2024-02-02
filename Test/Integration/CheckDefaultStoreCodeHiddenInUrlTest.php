@@ -11,6 +11,8 @@ use Magento\Store\Model\Store;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\TestCase\AbstractController;
 
+if (class_exists('Magento\TestFramework\TestCase\AbstractController')) {
+
 class CheckDefaultStoreCodeHiddenInUrlTest extends AbstractController
 {
     /**
@@ -64,4 +66,5 @@ class CheckDefaultStoreCodeHiddenInUrlTest extends AbstractController
         $this->config->setValue(Store::XML_PATH_STORE_IN_URL, true, ScopeInterface::SCOPE_STORE, $store->getCode());
         $this->assertStringNotContainsString('default', $store->getBaseUrl());
     }
+}
 }
