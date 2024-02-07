@@ -13,58 +13,58 @@ use Magento\TestFramework\TestCase\AbstractController;
 
 if (class_exists('Magento\TestFramework\TestCase\AbstractController')) {
 
-class CheckDefaultStoreCodeHiddenInUrlTest extends AbstractController
-{
-    /**
-     * @var StoreRepositoryInterface
-     */
-    protected $storeRepository;
-
-    /**
-     * @var ReinitableConfigInterface
-     */
-    protected $config;
-
-    protected function setUp(): void
+    class CheckDefaultStoreCodeHiddenInUrlTest extends AbstractController
     {
-        parent::setUp();
-        $objectManager         = Bootstrap::getObjectManager();
-        $this->config          = $objectManager->get(ReinitableConfigInterface::class);
-        $this->storeRepository = $objectManager->get(StoreRepositoryInterface::class);
-    }
+        /**
+         * @var StoreRepositoryInterface
+         */
+        protected $storeRepository;
 
-    /**
-     * @magentoDataFixture   Magento/Store/_files/store.php
-     */
-    public function testStoreCodeIsShownInNonDefaultStoreUrl(): void
-    {
-        $store = $this->storeRepository->get('test');
-        $this->config->setValue(Store::XML_PATH_STORE_IN_URL, true, ScopeInterface::SCOPE_STORE, $store->getCode());
-        $this->assertStringContainsString('test', $store->getBaseUrl());
-    }
+        /**
+         * @var ReinitableConfigInterface
+         */
+        protected $config;
 
-    /**
-     * @magentoDataFixture   Magento/Store/_files/store.php
-     */
-    public function testStoreCodeIsNotShownInNonDefaultStoreUrl(): void
-    {
-        $store = $this->storeRepository->get('test');
-        $this->config->setValue(Store::XML_PATH_STORE_IN_URL, false, ScopeInterface::SCOPE_STORE, $store->getCode());
-        $this->assertStringNotContainsString('test', $store->getBaseUrl());
-    }
+        protected function setUp(): void
+        {
+            parent::setUp();
+            $objectManager = Bootstrap::getObjectManager();
+            $this->config = $objectManager->get(ReinitableConfigInterface::class);
+            $this->storeRepository = $objectManager->get(StoreRepositoryInterface::class);
+        }
 
-    public function testStoreCodeIsNotShownInDefaultStoreUrl(): void
-    {
-        $store = $this->storeRepository->get('default');
-        $this->config->setValue(Store::XML_PATH_STORE_IN_URL, false, ScopeInterface::SCOPE_STORE, $store->getCode());
-        $this->assertStringNotContainsString('default', $store->getBaseUrl());
-    }
+        /**
+         * @magentoDataFixture   Magento/Store/_files/store.php
+         */
+        public function testStoreCodeIsShownInNonDefaultStoreUrl(): void
+        {
+            $store = $this->storeRepository->get('test');
+            $this->config->setValue(Store::XML_PATH_STORE_IN_URL, true, ScopeInterface::SCOPE_STORE, $store->getCode());
+            $this->assertStringContainsString('test', $store->getBaseUrl());
+        }
 
-    public function testStoreCodeIsShownInDefaultStoreUrl(): void
-    {
-        $store = $this->storeRepository->get('default');
-        $this->config->setValue(Store::XML_PATH_STORE_IN_URL, true, ScopeInterface::SCOPE_STORE, $store->getCode());
-        $this->assertStringNotContainsString('default', $store->getBaseUrl());
+        /**
+         * @magentoDataFixture   Magento/Store/_files/store.php
+         */
+        public function testStoreCodeIsNotShownInNonDefaultStoreUrl(): void
+        {
+            $store = $this->storeRepository->get('test');
+            $this->config->setValue(Store::XML_PATH_STORE_IN_URL, false, ScopeInterface::SCOPE_STORE, $store->getCode());
+            $this->assertStringNotContainsString('test', $store->getBaseUrl());
+        }
+
+        public function testStoreCodeIsNotShownInDefaultStoreUrl(): void
+        {
+            $store = $this->storeRepository->get('default');
+            $this->config->setValue(Store::XML_PATH_STORE_IN_URL, false, ScopeInterface::SCOPE_STORE, $store->getCode());
+            $this->assertStringNotContainsString('default', $store->getBaseUrl());
+        }
+
+        public function testStoreCodeIsShownInDefaultStoreUrl(): void
+        {
+            $store = $this->storeRepository->get('default');
+            $this->config->setValue(Store::XML_PATH_STORE_IN_URL, true, ScopeInterface::SCOPE_STORE, $store->getCode());
+            $this->assertStringNotContainsString('default', $store->getBaseUrl());
+        }
     }
-}
 }
