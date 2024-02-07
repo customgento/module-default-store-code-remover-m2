@@ -33,7 +33,8 @@ if (class_exists(MageWorxStoreUrl::class)) {
             return !($store->hasDisableStoreInUrl() && $store->getDisableStoreInUrl())
                 && $this->configDataLoader->getConfigValue(
                     Store::XML_PATH_STORE_IN_URL,
-                    $storeId);
+                    $storeId
+                );
         }
     }
 }
