@@ -8,7 +8,7 @@ use Magento\Store\Api\Data\StoreInterface;
 use Magento\Store\Model\Store;
 use MageWorx\SeoBase\Helper\StoreUrl as MageworxStoreUrl;
 
-if (class_exists('MageWorx\SeoBase\Helper\StoreUrl')) {
+if (class_exists(MageWorxStoreUrl::class)) {
 
     class StoreUrl extends MageworxStoreUrl
     {
@@ -31,7 +31,9 @@ if (class_exists('MageWorx\SeoBase\Helper\StoreUrl')) {
                 return false;
             }
             return !($store->hasDisableStoreInUrl() && $store->getDisableStoreInUrl())
-                && $this->configDataLoader->getConfigValue(Store::XML_PATH_STORE_IN_URL, $storeId);
+                && $this->configDataLoader->getConfigValue(
+                    Store::XML_PATH_STORE_IN_URL,
+                    $storeId);
         }
     }
 }
