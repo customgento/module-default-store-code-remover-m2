@@ -18,7 +18,7 @@
             "registration.php"
         ],
         "psr-4": {
-            "CustomGento\\DefaultStoreCodeRemover\\": ""
+            "CustomGento\\DefaultStoreCodeRemover\\": "/github/"
         }
     }
 }
