@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Helper;
+namespace CustomGento\DefaultStoreCodeRemover\Helper;
 
 use Magento\Store\Api\Data\StoreInterface;
 use Magento\Store\Model\Store;
