@@ -37,6 +37,4 @@ if (class_exists(MageWorxStoreUrl::class)) {
                 );
         }
     }
-} else {
-    return;
 }
