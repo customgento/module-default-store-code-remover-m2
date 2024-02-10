@@ -8,6 +8,7 @@ use Magento\Store\Api\Data\StoreInterface;
 use Magento\Store\Model\Store;
 use MageWorx\SeoBase\Helper\StoreUrl as MageworxStoreUrl;
 
+// Check if MageWorx\SeoBase\Helper\StoreUrl class exists
 if (class_exists(MageWorxStoreUrl::class)) {
 
     class StoreUrl extends MageworxStoreUrl
@@ -36,5 +37,11 @@ if (class_exists(MageWorxStoreUrl::class)) {
                     $storeId
                 );
         }
+    }
+} else {
+    // Handle the case when MageWorx\SeoBase\Helper\StoreUrl class is not found
+    class StoreUrl
+    {
+        // Provide an alternative implementation or leave it empty based on your needs
     }
 }
