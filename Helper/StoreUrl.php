@@ -9,8 +9,8 @@ use Magento\Store\Model\Store;
 use MageWorx\SeoBase\Helper\StoreUrl as MageworxStoreUrl;
 
 // Check if MageWorx\SeoBase\Helper\StoreUrl class exists
-if (class_exists(MageWorxStoreUrl::class)) {
-
+if (class_exists(MageworxStoreUrl::class)) {
+    // Extend MageWorx\SeoBase\Helper\StoreUrl when available
     class StoreUrl extends MageworxStoreUrl
     {
         protected function isUseStoreCodeInUrl(StoreInterface $store): bool
@@ -31,6 +31,7 @@ if (class_exists(MageWorxStoreUrl::class)) {
             if (empty($this->configDataLoader)) {
                 return false;
             }
+
             return !($store->hasDisableStoreInUrl() && $store->getDisableStoreInUrl())
                 && $this->configDataLoader->getConfigValue(
                     Store::XML_PATH_STORE_IN_URL,
@@ -39,9 +40,9 @@ if (class_exists(MageWorxStoreUrl::class)) {
         }
     }
 } else {
-    // Handle the case when MageWorx\SeoBase\Helper\StoreUrl class is not found
+    // Provide an alternative implementation when MageWorx\SeoBase\Helper\StoreUrl doesn't exist
     class StoreUrl
     {
-        // Provide an alternative implementation or leave it empty based on your needs
+        // Your alternative implementation
     }
 }
