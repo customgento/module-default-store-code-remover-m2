@@ -8,7 +8,7 @@ use Magento\Store\Api\Data\StoreInterface;
 use Magento\Store\Model\Store;
 use MageWorx\SeoBase\Helper\StoreUrl as MageworxStoreUrl;
 
-if (class_exists('MageWorx\SeoBase\Helper\StoreUrl')) {
+if (class_exists(MageWorx\SeoBase\Helper\StoreUrl::class)) {
 
     class StoreUrl extends MageworxStoreUrl
     {
