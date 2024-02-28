@@ -1,0 +1,351 @@
+name: ExtDN M2 Integration Tests
+on: [ push, pull_request ]
+jobs:
+  integration-tests-2-4-4-p6-8-1:
+    name: Magento 2.4.4-p6 PHP 8.1 Integration Tests
+    runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:5.7
+        env:
+          MYSQL_ROOT_PASSWORD: root
+        ports:
+          - 3306:3306
+        options: --tmpfs /tmp:rw --tmpfs /var/lib/mysql:rw --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+      es:
+        image: docker.io/wardenenv/elasticsearch:7.8
+        ports:
+          - 9200:9200
+        env:
+          'discovery.type': single-node
+          'xpack.security.enabled': false
+          ES_JAVA_OPTS: "-Xms64m -Xmx512m"
+        options: --health-cmd="curl localhost:9200/_cluster/health?wait_for_status=yellow&timeout=60s" --health-interval=10s --health-timeout=5s --health-retries=3
+    steps:
+      - uses: actions/checkout@v4
+      - name: M2 Integration Tests with Magento 2 Version 2.4.4-p6 (PHP 8.1)
+        uses: extdn/github-actions-m2/magento-integration-tests/8.1@master
+        with:
+          module_name: CustomGento_DefaultStoreCodeRemover
+          composer_name: customgento/module-default-store-code-remover-m2
+          ce_version: '2.4.4-p6'
+          composer_version: '2'
+  integration-tests-2-4-4-p6-7-4:
+    name: Magento 2.4.4-p6 PHP 7.4 Integration Tests
+    runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:5.7
+        env:
+          MYSQL_ROOT_PASSWORD: root
+        ports:
+          - 3306:3306
+        options: --tmpfs /tmp:rw --tmpfs /var/lib/mysql:rw --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+      es:
+        image: docker.io/wardenenv/elasticsearch:7.8
+        ports:
+          - 9200:9200
+        env:
+          'discovery.type': single-node
+          'xpack.security.enabled': false
+          ES_JAVA_OPTS: "-Xms64m -Xmx512m"
+        options: --health-cmd="curl localhost:9200/_cluster/health?wait_for_status=yellow&timeout=60s" --health-interval=10s --health-timeout=5s --health-retries=3
+    steps:
+      - uses: actions/checkout@v4
+      - name: M2 Integration Tests with Magento 2 Version 2.4.4-p6 (PHP 7.4)
+        uses: extdn/github-actions-m2/magento-integration-tests/7.4@master
+        with:
+          module_name: CustomGento_DefaultStoreCodeRemover
+          composer_name: customgento/module-default-store-code-remover-m2
+          ce_version: '2.4.4-p6'
+          composer_version: '2'
+  integration-tests-2-4-4-p5-7-4:
+    name: Magento 2.4.4-p5 PHP 7.4 Integration Tests
+    runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:5.7
+        env:
+          MYSQL_ROOT_PASSWORD: root
+        ports:
+          - 3306:3306
+        options: --tmpfs /tmp:rw --tmpfs /var/lib/mysql:rw --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+      es:
+        image: docker.io/wardenenv/elasticsearch:7.8
+        ports:
+          - 9200:9200
+        env:
+          'discovery.type': single-node
+          'xpack.security.enabled': false
+          ES_JAVA_OPTS: "-Xms64m -Xmx512m"
+        options: --health-cmd="curl localhost:9200/_cluster/health?wait_for_status=yellow&timeout=60s" --health-interval=10s --health-timeout=5s --health-retries=3
+    steps:
+      - uses: actions/checkout@v4
+      - name: M2 Integration Tests with Magento 2 Version 2.4.4-p5 (PHP 7.4)
+        uses: extdn/github-actions-m2/magento-integration-tests/7.4@master
+        with:
+          module_name: CustomGento_DefaultStoreCodeRemover
+          composer_name: customgento/module-default-store-code-remover-m2
+          ce_version: '2.4.4-p5'
+          composer_version: '2'
+  integration-tests-2-4-4-p5-8-1:
+    name: Magento 2.4.4-p5 PHP 8.1 Integration Tests
+    runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:5.7
+        env:
+          MYSQL_ROOT_PASSWORD: root
+        ports:
+          - 3306:3306
+        options: --tmpfs /tmp:rw --tmpfs /var/lib/mysql:rw --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+      es:
+        image: docker.io/wardenenv/elasticsearch:7.8
+        ports:
+          - 9200:9200
+        env:
+          'discovery.type': single-node
+          'xpack.security.enabled': false
+          ES_JAVA_OPTS: "-Xms64m -Xmx512m"
+        options: --health-cmd="curl localhost:9200/_cluster/health?wait_for_status=yellow&timeout=60s" --health-interval=10s --health-timeout=5s --health-retries=3
+    steps:
+      - uses: actions/checkout@v4
+      - name: M2 Integration Tests with Magento 2 Version 2.4.4-p5 (PHP 8.1)
+        uses: extdn/github-actions-m2/magento-integration-tests/8.1@master
+        with:
+          module_name: CustomGento_DefaultStoreCodeRemover
+          composer_name: customgento/module-default-store-code-remover-m2
+          ce_version: '2.4.4-p5'
+          composer_version: '2'
+  integration-tests-2-4-5-p5-8-1:
+    name: Magento 2.4.5-p5 PHP 8.1 Integration Tests
+    runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:5.7
+        env:
+          MYSQL_ROOT_PASSWORD: root
+        ports:
+          - 3306:3306
+        options: --tmpfs /tmp:rw --tmpfs /var/lib/mysql:rw --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+      es:
+        image: docker.io/wardenenv/elasticsearch:7.8
+        ports:
+          - 9200:9200
+        env:
+          'discovery.type': single-node
+          'xpack.security.enabled': false
+          ES_JAVA_OPTS: "-Xms64m -Xmx512m"
+        options: --health-cmd="curl localhost:9200/_cluster/health?wait_for_status=yellow&timeout=60s" --health-interval=10s --health-timeout=5s --health-retries=3
+    steps:
+      - uses: actions/checkout@v4
+      - name: M2 Integration Tests with Magento 2 Version 2.4.5-p5 (PHP 8.1)
+        uses: extdn/github-actions-m2/magento-integration-tests/8.1@master
+        with:
+          module_name: CustomGento_DefaultStoreCodeRemover
+          composer_name: customgento/module-default-store-code-remover-m2
+          ce_version: '2.4.5-p5'
+          composer_version: '2'
+  integration-tests-2-4-5-p5-7-4:
+    name: Magento 2.4.5-p5 PHP 7.4 Integration Tests
+    runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:5.7
+        env:
+          MYSQL_ROOT_PASSWORD: root
+        ports:
+          - 3306:3306
+        options: --tmpfs /tmp:rw --tmpfs /var/lib/mysql:rw --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+      es:
+        image: docker.io/wardenenv/elasticsearch:7.8
+        ports:
+          - 9200:9200
+        env:
+          'discovery.type': single-node
+          'xpack.security.enabled': false
+          ES_JAVA_OPTS: "-Xms64m -Xmx512m"
+        options: --health-cmd="curl localhost:9200/_cluster/health?wait_for_status=yellow&timeout=60s" --health-interval=10s --health-timeout=5s --health-retries=3
+    steps:
+      - uses: actions/checkout@v4
+      - name: M2 Integration Tests with Magento 2 Version 2.4.5-p5 (PHP 7.4)
+        uses: extdn/github-actions-m2/magento-integration-tests/7.4@master
+        with:
+          module_name: CustomGento_DefaultStoreCodeRemover
+          composer_name: customgento/module-default-store-code-remover-m2
+          ce_version: '2.4.5-p5'
+          composer_version: '2'
+  integration-tests-2-4-5-p4-7-4:
+    name: Magento 2.4.5-p4 PHP 7.4 Integration Tests
+    runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:5.7
+        env:
+          MYSQL_ROOT_PASSWORD: root
+        ports:
+          - 3306:3306
+        options: --tmpfs /tmp:rw --tmpfs /var/lib/mysql:rw --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+      es:
+        image: docker.io/wardenenv/elasticsearch:7.8
+        ports:
+          - 9200:9200
+        env:
+          'discovery.type': single-node
+          'xpack.security.enabled': false
+          ES_JAVA_OPTS: "-Xms64m -Xmx512m"
+        options: --health-cmd="curl localhost:9200/_cluster/health?wait_for_status=yellow&timeout=60s" --health-interval=10s --health-timeout=5s --health-retries=3
+    steps:
+      - uses: actions/checkout@v4
+      - name: M2 Integration Tests with Magento 2 Version 2.4.5-p4 (PHP 7.4)
+        uses: extdn/github-actions-m2/magento-integration-tests/7.4@master
+        with:
+          module_name: CustomGento_DefaultStoreCodeRemover
+          composer_name: customgento/module-default-store-code-remover-m2
+          ce_version: '2.4.5-p4'
+          composer_version: '2'
+  integration-tests-2-4-5-p4-8-1:
+    name: Magento 2.4.5-p4 PHP 8.1 Integration Tests
+    runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:5.7
+        env:
+          MYSQL_ROOT_PASSWORD: root
+        ports:
+          - 3306:3306
+        options: --tmpfs /tmp:rw --tmpfs /var/lib/mysql:rw --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+      es:
+        image: docker.io/wardenenv/elasticsearch:7.8
+        ports:
+          - 9200:9200
+        env:
+          'discovery.type': single-node
+          'xpack.security.enabled': false
+          ES_JAVA_OPTS: "-Xms64m -Xmx512m"
+        options: --health-cmd="curl localhost:9200/_cluster/health?wait_for_status=yellow&timeout=60s" --health-interval=10s --health-timeout=5s --health-retries=3
+    steps:
+      - uses: actions/checkout@v4
+      - name: M2 Integration Tests with Magento 2 Version 2.4.5-p4 (PHP 8.1)
+        uses: extdn/github-actions-m2/magento-integration-tests/8.1@master
+        with:
+          module_name: CustomGento_DefaultStoreCodeRemover
+          composer_name: customgento/module-default-store-code-remover-m2
+          ce_version: '2.4.5-p4'
+          composer_version: '2'
+  integration-tests-2-4-6-p3-8-1:
+    name: Magento 2.4.6-p3 PHP 8.1 Integration Tests
+    runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:5.7
+        env:
+          MYSQL_ROOT_PASSWORD: root
+        ports:
+          - 3306:3306
+        options: --tmpfs /tmp:rw --tmpfs /var/lib/mysql:rw --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+      es:
+        image: docker.io/wardenenv/elasticsearch:7.8
+        ports:
+          - 9200:9200
+        env:
+          'discovery.type': single-node
+          'xpack.security.enabled': false
+          ES_JAVA_OPTS: "-Xms64m -Xmx512m"
+        options: --health-cmd="curl localhost:9200/_cluster/health?wait_for_status=yellow&timeout=60s" --health-interval=10s --health-timeout=5s --health-retries=3
+    steps:
+      - uses: actions/checkout@v4
+      - name: M2 Integration Tests with Magento 2 Version 2.4.6-p3 (PHP 8.1)
+        uses: extdn/github-actions-m2/magento-integration-tests/8.1@master
+        with:
+          module_name: CustomGento_DefaultStoreCodeRemover
+          composer_name: customgento/module-default-store-code-remover-m2
+          ce_version: '2.4.6-p3'
+          composer_version: '2'
+  integration-tests-2-4-6-p3-8-2:
+    name: Magento 2.4.6-p3 PHP 8.2 Integration Tests
+    runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:5.7
+        env:
+          MYSQL_ROOT_PASSWORD: root
+        ports:
+          - 3306:3306
+        options: --tmpfs /tmp:rw --tmpfs /var/lib/mysql:rw --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+      es:
+        image: docker.io/wardenenv/elasticsearch:7.8
+        ports:
+          - 9200:9200
+        env:
+          'discovery.type': single-node
+          'xpack.security.enabled': false
+          ES_JAVA_OPTS: "-Xms64m -Xmx512m"
+        options: --health-cmd="curl localhost:9200/_cluster/health?wait_for_status=yellow&timeout=60s" --health-interval=10s --health-timeout=5s --health-retries=3
+    steps:
+      - uses: actions/checkout@v4
+      - name: M2 Integration Tests with Magento 2 Version 2.4.6-p3 (PHP 8.2)
+        uses: extdn/github-actions-m2/magento-integration-tests/8.2@master
+        with:
+          module_name: CustomGento_DefaultStoreCodeRemover
+          composer_name: customgento/module-default-store-code-remover-m2
+          ce_version: '2.4.6-p3'
+          composer_version: '2'
+  integration-tests-2-4-6-p2-8-2:
+    name: Magento 2.4.6-p2 PHP 8.2 Integration Tests
+    runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:5.7
+        env:
+          MYSQL_ROOT_PASSWORD: root
+        ports:
+          - 3306:3306
+        options: --tmpfs /tmp:rw --tmpfs /var/lib/mysql:rw --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+      es:
+        image: docker.io/wardenenv/elasticsearch:7.8
+        ports:
+          - 9200:9200
+        env:
+          'discovery.type': single-node
+          'xpack.security.enabled': false
+          ES_JAVA_OPTS: "-Xms64m -Xmx512m"
+        options: --health-cmd="curl localhost:9200/_cluster/health?wait_for_status=yellow&timeout=60s" --health-interval=10s --health-timeout=5s --health-retries=3
+    steps:
+      - uses: actions/checkout@v4
+      - name: M2 Integration Tests with Magento 2 Version 2.4.6-p2 (PHP 8.2)
+        uses: extdn/github-actions-m2/magento-integration-tests/8.2@master
+        with:
+          module_name: CustomGento_DefaultStoreCodeRemover
+          composer_name: customgento/module-default-store-code-remover-m2
+          ce_version: '2.4.6-p2'
+          composer_version: '2'
+  integration-tests-2-4-6-p2-8-1:
+    name: Magento 2.4.6-p2 PHP 8.1 Integration Tests
+    runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:5.7
+        env:
+          MYSQL_ROOT_PASSWORD: root
+        ports:
+          - 3306:3306
+        options: --tmpfs /tmp:rw --tmpfs /var/lib/mysql:rw --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+      es:
+        image: docker.io/wardenenv/elasticsearch:7.8
+        ports:
+          - 9200:9200
+        env:
+          'discovery.type': single-node
+          'xpack.security.enabled': false
+          ES_JAVA_OPTS: "-Xms64m -Xmx512m"
+        options: --health-cmd="curl localhost:9200/_cluster/health?wait_for_status=yellow&timeout=60s" --health-interval=10s --health-timeout=5s --health-retries=3
+    steps:
+      - uses: actions/checkout@v4
+      - name: M2 Integration Tests with Magento 2 Version 2.4.6-p2 (PHP 8.1)
+        uses: extdn/github-actions-m2/magento-integration-tests/8.1@master
+        with:
+          module_name: CustomGento_DefaultStoreCodeRemover
+          composer_name: customgento/module-default-store-code-remover-m2
+          ce_version: '2.4.6-p2'
+          composer_version: '2'
