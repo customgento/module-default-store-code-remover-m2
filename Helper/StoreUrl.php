@@ -6,7 +6,10 @@ namespace CustomGento\DefaultStoreCodeRemover\Helper;
 
 use Magento\Store\Api\Data\StoreInterface;
 use Magento\Store\Model\Store;
+/** @phpstan-ignore-next-line */
 use MageWorx\SeoBase\Helper\StoreUrl as MageworxStoreUrl;
+
+// phpcs:disable PSR1.Classes.ClassDeclaration.MultipleClasses
 
 if (class_exists(MageworxStoreUrl::class)) {
     class StoreUrl extends MageworxStoreUrl

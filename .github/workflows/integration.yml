@@ -1,0 +1,9 @@
+name: ExtDN M2 Integration
+on: [push, pull_request]
+
+jobs:
+  integration:
+    uses: customgento/m2-github-actions/.github/workflows/integration.yml@main
+    with:
+      module_name: CustomGento_DefaultStoreCodeRemover
+      composer_name: customgento/module-default-store-code-remover-m2

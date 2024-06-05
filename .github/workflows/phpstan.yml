@@ -1,0 +1,8 @@
+name: ExtDN M2 PHPStan
+on: [push, pull_request]
+
+jobs:
+  phpstan:
+    uses: customgento/m2-github-actions/.github/workflows/phpstan.yml@main
+    with:
+      composer_name: customgento/module-default-store-code-remover-m2

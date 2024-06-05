@@ -1,0 +1,6 @@
+name: ExtDN M2 Mess Detector
+on: [push, pull_request]
+
+jobs:
+  phpmd:
+    uses: customgento/m2-github-actions/.github/workflows/mess-detector.yml@main
