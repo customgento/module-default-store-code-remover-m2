@@ -22,6 +22,8 @@ jobs:
           ES_JAVA_OPTS: "-Xms64m -Xmx512m"
         options: --health-cmd="curl localhost:9200/_cluster/health?wait_for_status=yellow&timeout=60s" --health-interval=10s --health-timeout=5s --health-retries=3
     steps:
+      - name: Allow safe directory
+        run: git config --global --add safe.directory /github/workspace
       - uses: actions/checkout@v4
       - name: M2 Integration Tests with Magento 2 Version 2.4.6-p10 (PHP 8.1)
         uses: extdn/github-actions-m2/magento-integration-tests/8.1@master
