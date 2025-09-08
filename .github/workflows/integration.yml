@@ -31,4 +31,3 @@ jobs:
           module_name: CustomGento_DefaultStoreCodeRemover
           composer_name: customgento/module-default-store-code-remover-m2
           magento_version: '2.4.6-p10'
-          composer_version: '2'
