@@ -8,6 +8,7 @@ Default Store Code Remover for Magento 2 hides the store code in the default sto
 * <code>bin/magento module:enable CustomGento_DefaultStoreCodeRemover</code>
 * <code>bin/magento setup:upgrade</code>
 * <code>bin/magento cache:flush</code>
+
 * <code>bin/magento setup:di:compile</code>
 
 ## Example
