@@ -9,8 +9,6 @@ jobs:
         image: mysql:5.7
         env:
           MYSQL_ROOT_PASSWORD: root
-          MYSQL_DATABASE: magento2test
-          MYSQL_PASSWORD: root
           MYSQL_SQL_TO_RUN: 'GRANT ALL ON *.* TO "root"@"%";'
         ports:
           - 3306:3306
