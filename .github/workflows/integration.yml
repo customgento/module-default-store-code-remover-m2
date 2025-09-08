@@ -1,9 +1,32 @@
 name: ExtDN M2 Integration
 on: [push, pull_request]
-
 jobs:
-  integration:
-    uses: customgento/m2-github-actions/.github/workflows/integration.yml@main
-    with:
-      module_name: CustomGento_DefaultStoreCodeRemover
-      composer_name: customgento/module-default-store-code-remover-m2
+  integration-tests-2-4-6-p10-8-1:
+    name: Magento 2.4.6-p10 PHP 8.1 Integration Tests
+    runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:5.7
+        env:
+          MYSQL_ROOT_PASSWORD: root
+        ports:
+          - 3306:3306
+        options: --tmpfs /tmp:rw --tmpfs /var/lib/mysql:rw --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+      es:
+        image: docker.io/wardenenv/elasticsearch:7.8
+        ports:
+          - 9200:9200
+        env:
+          'discovery.type': single-node
+          'xpack.security.enabled': false
+          ES_JAVA_OPTS: "-Xms64m -Xmx512m"
+        options: --health-cmd="curl localhost:9200/_cluster/health?wait_for_status=yellow&timeout=60s" --health-interval=10s --health-timeout=5s --health-retries=3
+    steps:
+      - uses: actions/checkout@v4
+      - name: M2 Integration Tests with Magento 2 Version 2.4.6-p10 (PHP 8.1)
+        uses: extdn/github-actions-m2/magento-integration-tests/8.1@master
+        with:
+          module_name: CustomGento_DefaultStoreCodeRemover
+          composer_name: customgento/module-default-store-code-remover-m2
+          magento_version: '2.4.6-p10'
+          composer_version: '2'
