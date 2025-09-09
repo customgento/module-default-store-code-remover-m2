@@ -13,6 +13,9 @@
         "php": "~7.3.0||~7.4.0||~8.1.0||~8.2.0||~8.3.0||~8.4.0",
         "magento/module-store": "~101.0"
     },
+    "suggest": {
+        "customgento/module-default-store-code-remover-m2-mageworx-compatibility": "This module ensures compatibility with MageWorx extensions."
+    },
     "autoload": {
         "files": [
             "registration.php"
