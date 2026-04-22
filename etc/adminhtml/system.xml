@@ -1,24 +1,12 @@
 <?xml version="1.0"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
     <system>
-        <tab id="customgento" translate="label" sortOrder="400">
-            <label>CustomGento</label>
-        </tab>
-        <section id="customgento_default_store_code_remover"
-                 translate="label"
-                 sortOrder="10"
-                 showInDefault="1"
-                 showInWebsite="0"
-                 showInStore="0">
-            <label>Default Store Code Remover</label>
-            <tab>customgento</tab>
-            <resource>CustomGento_DefaultStoreCodeRemover::config</resource>
-            <group id="general" translate="label" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
-                <label>General</label>
+        <section id="web" translate="label" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+            <group id="url" translate="label" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="1">
                 <field id="use_per_store_config"
                        translate="label comment"
                        type="select"
-                       sortOrder="10"
+                       sortOrder="15"
                        showInDefault="1"
                        showInWebsite="0"
                        showInStore="0">
@@ -28,11 +16,14 @@
                         <strong>Yes:</strong> You choose individually which stores have their store code removed.
                     ]]></comment>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="use_store">1</field>
+                    </depends>
                 </field>
                 <field id="stores_without_store_code"
                        translate="label comment"
                        type="multiselect"
-                       sortOrder="20"
+                       sortOrder="16"
                        showInDefault="1"
                        showInWebsite="0"
                        showInStore="0">
@@ -40,6 +31,7 @@
                     <comment>Select every store whose store code should be removed from the URL.</comment>
                     <source_model>Magento\Config\Model\Config\Source\Store</source_model>
                     <depends>
+                        <field id="use_store">1</field>
                         <field id="use_per_store_config">1</field>
                     </depends>
                 </field>

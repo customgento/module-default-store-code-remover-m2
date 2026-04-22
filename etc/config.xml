@@ -1,12 +1,11 @@
 <?xml version="1.0"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
     <default>
-        <customgento_default_store_code_remover>
-            <general>
-                <!-- Default: NO — keeps existing behaviour after module update -->
+        <web>
+            <url>
                 <use_per_store_config>0</use_per_store_config>
                 <stores_without_store_code></stores_without_store_code>
-            </general>
-        </customgento_default_store_code_remover>
+            </url>
+        </web>
     </default>
 </config>

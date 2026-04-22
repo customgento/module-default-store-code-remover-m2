@@ -8,8 +8,8 @@ use Magento\Framework\App\Config\ScopeConfigInterface;
 
 class Config
 {
-    public const XML_PATH_USE_PER_STORE_CONFIG = 'customgento_default_store_code_remover/general/use_per_store_config';
-    public const XML_PATH_STORES_WITHOUT_STORE_CODE = 'customgento_default_store_code_remover/general/stores_without_store_code';
+    public const XML_PATH_USE_PER_STORE_CONFIG = 'web/url/use_per_store_config';
+    public const XML_PATH_STORES_WITHOUT_STORE_CODE = 'web/url/stores_without_store_code';
 
     public function __construct(private readonly ScopeConfigInterface $scopeConfig)
     {
