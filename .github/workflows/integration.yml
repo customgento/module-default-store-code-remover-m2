@@ -1,5 +1,5 @@
 name: ExtDN M2 Integration Tests
-on:
+on: [push, pull_request]
   workflow_call:
     inputs:
       module_name:
