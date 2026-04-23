@@ -4,7 +4,7 @@ Default Store Code Remover for Magento 2 hides the store code in the default sto
 
 The module also provides an optional, extended configuration to control store code removal **per store view**:
 
-- Configuration path: **Store > Configuration > CustomGento > Default Store Code Remover**
+- Configuration path: **Store > Configuration > Genral > Web**
 - Setting: **Configure Store Code Removal Per Store** (Yes/No)
     - Default value: **No** (backwards compatible)
         - Uses the original behavior: the store code is removed from the **default store view** URL, while all other store views keep their store code in the URL.

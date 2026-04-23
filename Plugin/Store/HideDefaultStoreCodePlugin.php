@@ -20,11 +20,8 @@ class HideDefaultStoreCodePlugin
         }
 
         if ($this->config->isPerStoreConfigEnabled()) {
-            if (in_array((int)$subject->getId(), $this->config->getStoreIdsWithoutStoreCode(), true)) {
-                return false;
-            }
-
-            return $resultIsUseInUrl;
+            return !in_array((int)$subject->getId(), $this->config->getStoreIdsWithoutStoreCode(), true)
+                && $resultIsUseInUrl;
         }
 
         // Default / legacy behaviour: only strip the code for the default store

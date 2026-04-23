@@ -20,11 +20,6 @@ class Config
         return $this->scopeConfig->isSetFlag(self::XML_PATH_USE_PER_STORE_CONFIG);
     }
 
-    /**
-     * Returns store IDs for which the store code should be removed from the URL.
-     *
-     * @return int[]
-     */
     public function getStoreIdsWithoutStoreCode(): array
     {
         $value = $this->scopeConfig->getValue(self::XML_PATH_STORES_WITHOUT_STORE_CODE);
