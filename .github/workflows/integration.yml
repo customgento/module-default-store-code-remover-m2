@@ -1,15 +1,5 @@
 name: ExtDN M2 Integration Tests
 on: [push, pull_request]
-  workflow_call:
-    inputs:
-      module_name:
-        description: "Module name"
-        required: true
-        type: string
-      composer_name:
-        description: "Composer name"
-        required: true
-        type: string
 
 jobs:
   integration-tests-2-4-6-p13-8-1:
