@@ -6,4 +6,4 @@ jobs:
     uses: customgento/m2-github-actions/.github/workflows/integration.yml@main
     with:
       module_name: CustomGento_DefaultStoreCodeRemover
-      composer_name: customgento/module-default-store-code-remover-m2
+      composer_name: customgento/module-default-store-code-remover-m3
