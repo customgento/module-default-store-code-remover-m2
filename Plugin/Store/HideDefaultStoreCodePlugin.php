@@ -13,15 +13,18 @@ class HideDefaultStoreCodePlugin
     {
     }
 
-    public function afterIsUseStoreInUrl(Store $subject, bool $resultIsUseInUrl): bool
+    public function afterIsUseStoreInUrl(Store $subject, bool $storeCodeShallBeIncludedInUrl): bool
     {
+        if (!$storeCodeShallBeIncludedInUrl) {
+            return $storeCodeShallBeIncludedInUrl;
+        }
+
         if ($subject->getCode() === Store::ADMIN_CODE) {
-            return $resultIsUseInUrl;
+            return $storeCodeShallBeIncludedInUrl;
         }
 
         if ($this->config->isPerStoreConfigEnabled()) {
-            return !in_array((int)$subject->getId(), $this->config->getStoreIdsWithoutStoreCode(), true)
-                && $resultIsUseInUrl;
+            return !in_array((int)$subject->getId(), $this->config->getStoreIdsWithoutStoreCode(), true);
         }
 
         // Default / legacy behaviour: only strip the code for the default store
@@ -29,6 +32,6 @@ class HideDefaultStoreCodePlugin
             return false;
         }
 
-        return $resultIsUseInUrl;
+        return $storeCodeShallBeIncludedInUrl;
     }
 }
