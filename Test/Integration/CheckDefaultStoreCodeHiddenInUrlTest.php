@@ -4,10 +4,7 @@ declare(strict_types=1);
 
 namespace CustomGento\DefaultStoreCodeRemover\Test\Integration;
 
-use Magento\Framework\App\Config\ReinitableConfigInterface;
 use Magento\Store\Api\StoreRepositoryInterface;
-use Magento\Store\Model\ScopeInterface;
-use Magento\Store\Model\Store;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\TestCase\AbstractController;
 
@@ -18,60 +15,53 @@ class CheckDefaultStoreCodeHiddenInUrlTest extends AbstractController
      */
     protected $storeRepository;
 
-    /**
-     * @var ReinitableConfigInterface
-     */
-    protected $config;
-
     protected function setUp(): void
     {
         parent::setUp();
-        $objectManager         = Bootstrap::getObjectManager();
-        $this->config          = $objectManager->get(ReinitableConfigInterface::class);
-        $this->storeRepository = $objectManager->get(StoreRepositoryInterface::class);
+        $this->storeRepository = Bootstrap::getObjectManager()->get(StoreRepositoryInterface::class);
     }
 
     /**
+     * Magento < 2.4.9 reads web/url/use_store in the store scope, Magento >= 2.4.9 in the default scope.
+     *
      * @magentoDataFixture   Magento/Store/_files/store.php
+     * @magentoConfigFixture default/web/url/use_store 1
+     * @magentoConfigFixture test_store web/url/use_store 1
      */
     public function testStoreCodeIsShownInNonDefaultStoreUrl(): void
     {
         $store = $this->storeRepository->get('test');
-        $this->config->setValue(Store::XML_PATH_STORE_IN_URL, true, ScopeInterface::SCOPE_STORE, $store->getCode());
         $this->assertStringContainsString('test', $store->getBaseUrl());
     }
 
     /**
      * @magentoDataFixture   Magento/Store/_files/store.php
+     * @magentoConfigFixture default/web/url/use_store 0
+     * @magentoConfigFixture test_store web/url/use_store 0
      */
     public function testStoreCodeIsNotShownInNonDefaultStoreUrl(): void
     {
         $store = $this->storeRepository->get('test');
-        $this->config->setValue(
-            Store::XML_PATH_STORE_IN_URL,
-            false,
-            ScopeInterface::SCOPE_STORE,
-            $store->getCode()
-        );
         $this->assertStringNotContainsString('test', $store->getBaseUrl());
     }
 
+    /**
+     * @magentoConfigFixture default/web/url/use_store 0
+     * @magentoConfigFixture default_store web/url/use_store 0
+     */
     public function testStoreCodeIsNotShownInDefaultStoreUrl(): void
     {
         $store = $this->storeRepository->get('default');
-        $this->config->setValue(
-            Store::XML_PATH_STORE_IN_URL,
-            false,
-            ScopeInterface::SCOPE_STORE,
-            $store->getCode()
-        );
         $this->assertStringNotContainsString('default', $store->getBaseUrl());
     }
 
+    /**
+     * @magentoConfigFixture default/web/url/use_store 1
+     * @magentoConfigFixture default_store web/url/use_store 1
+     */
     public function testStoreCodeIsShownInDefaultStoreUrl(): void
     {
         $store = $this->storeRepository->get('default');
-        $this->config->setValue(Store::XML_PATH_STORE_IN_URL, true, ScopeInterface::SCOPE_STORE, $store->getCode());
         $this->assertStringNotContainsString('default', $store->getBaseUrl());
     }
 }
