@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace CustomGento\DefaultStoreCodeRemover\Test\Integration;
 
 use Magento\Store\Api\StoreRepositoryInterface;
+use Magento\Store\Model\Store;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\TestCase\AbstractController;
 
@@ -31,6 +32,7 @@ class CheckDefaultStoreCodeHiddenInUrlTest extends AbstractController
     public function testStoreCodeIsShownInNonDefaultStoreUrl(): void
     {
         $store = $this->storeRepository->get('test');
+        self::assertInstanceOf(Store::class, $store);
         $this->assertStringContainsString('test', $store->getBaseUrl());
     }
 
@@ -42,6 +44,7 @@ class CheckDefaultStoreCodeHiddenInUrlTest extends AbstractController
     public function testStoreCodeIsNotShownInNonDefaultStoreUrl(): void
     {
         $store = $this->storeRepository->get('test');
+        self::assertInstanceOf(Store::class, $store);
         $this->assertStringNotContainsString('test', $store->getBaseUrl());
     }
 
@@ -52,6 +55,7 @@ class CheckDefaultStoreCodeHiddenInUrlTest extends AbstractController
     public function testStoreCodeIsNotShownInDefaultStoreUrl(): void
     {
         $store = $this->storeRepository->get('default');
+        self::assertInstanceOf(Store::class, $store);
         $this->assertStringNotContainsString('default', $store->getBaseUrl());
     }
 
@@ -62,6 +66,7 @@ class CheckDefaultStoreCodeHiddenInUrlTest extends AbstractController
     public function testStoreCodeIsShownInDefaultStoreUrl(): void
     {
         $store = $this->storeRepository->get('default');
+        self::assertInstanceOf(Store::class, $store);
         $this->assertStringNotContainsString('default', $store->getBaseUrl());
     }
 }
